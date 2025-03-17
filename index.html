@@ -8,6 +8,20 @@
   <link rel="stylesheet" href="style.css">
   <script src="https://kit.fontawesome.com/8a4abd7143.js" crossorigin="anonymous"></script>
 </head>
+<!-- 在</body>前添加以下脚本 -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const backToTop = document.querySelector('.back-to-top');
+    
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 200) {  // 滚动超过200px时显示
+        backToTop.style.display = 'block';
+      } else {
+        backToTop.style.display = 'none';
+      }
+    });
+  });
+  </script>
 <body class="webfont2">
     <div id="header">
         <h3 class="webfont2"><a href="index.html">Li Chengxuan</a></h3>
