@@ -9,7 +9,7 @@ let speedY = 0;
 let snakeBody = [];
 let foodX, foodY;
 let gameOver = false;
-let turnCount = 0;
+let turnCount = -1;
 let gameInterval;
 let bombX, bombY;
 let isBombActive = false;
@@ -86,7 +86,7 @@ function resetGame() {
     speedX = 0;
     speedY = 0;
     snakeBody = [];
-    turnCount = 0;
+    turnCount = -1;
     gameOver = false;
     isBombActive = false;
     isPowerUpActive = false;
