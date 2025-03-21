@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game with GFG</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="game.js" defer></script>
+</head>
+<body>
+    <h1>Snake Game with 
+        <div class="geeks">Geeks For Geeks</div>
+    </h1>
+    <div id="stats">
+        <span>长度：<span id="length">1</span></span>
+        <span style="margin-left: 20px;">平均长度增长1的操作次数：<span id="avgTurns">0</span></span>
+    </div>
+    <div id="legend">
+        <div class="legend-item">
+            <span class="color-box food"></span>食物
+        </div>
+        <div class="legend-item">
+            <span class="color-box power-up"></span>三倍食物
+        </div>
+        <div class="legend-item">
+            <span class="color-box bomb"></span>炸弹
+        </div>
+    </div>
+    <div id="menu">
+        <button id="startBtn">开始游戏</button>
+        <select id="difficulty">
+            <option value="100">简单</option>
+            <option value="75">中等</option>
+            <option value="50">困难</option>
+        </select>
+    </div>
+    <div id="prompt">按任意方向键开始</div>
+    <canvas id="board"></canvas>
+</body>
+</html>
+

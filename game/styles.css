@@ -1,0 +1,56 @@
+body {
+    text-align: center;
+    background: #1a1a1a;
+    color: white;
+}
+.geeks {
+    font-size: 40px;
+    font-weight: bold;
+    color: green;
+}
+#stats {
+    margin: 20px;
+    font-size: 18px;
+}
+#menu {
+    margin: 15px;
+}
+#prompt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: yellow;
+    pointer-events: none;
+}
+canvas {
+    border: 2px solid white;
+}
+
+#legend {
+    margin: 20px auto;
+    padding: 10px;
+    background: rgba(0,0,0,0.7);
+    border-radius: 8px;
+    display: inline-flex;
+    gap: 20px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+}
+
+.color-box {
+    width: 20px;
+    height: 20px;
+    border: 2px solid white;
+    border-radius: 4px;
+}
+
+.food { background-color: yellow; }
+.power-up { background-color: blue; }
+.bomb { background-color: red; }

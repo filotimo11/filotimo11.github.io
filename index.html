@@ -7,21 +7,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Display:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="https://kit.fontawesome.com/8a4abd7143.js" crossorigin="anonymous"></script>
+  <script src="game.js"></script>
+  <script src="footer.js"></script>
 </head>
-<!-- 在</body>前添加以下脚本 -->
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const backToTop = document.querySelector('.back-to-top');
-    
-    window.addEventListener('scroll', function() {
-      if (window.scrollY > 200) {  // 滚动超过200px时显示
-        backToTop.style.display = 'block';
-      } else {
-        backToTop.style.display = 'none';
-      }
-    });
-  });
-  </script>
+  
 <body class="webfont2">
     <div id="header">
         <h3 class="webfont2"><a href="index.html">Li Chengxuan</a></h3>
@@ -374,6 +363,118 @@
       </div>
   </div>
 </div>
+
+<div class="game-container webfont2">
+  <h2 class="section-title">武侠主题贪吃蛇
+    <span class="theme-tag">江湖版</span>
+  </h2>
+  
+  <div class="game-stats">
+    <div class="stat-item">
+      <i class="fas fa-dragon"></i>
+      <span>当前长度：<span id="length">1</span></span>
+    </div>
+    <div class="stat-item">
+      <i class="fas fa-yin-yang"></i>
+      <span>身法效率：<span id="avgTurns">0</span></span>
+    </div>
+  </div>
+
+  <div class="game-controls">
+    <button id="startBtn" class="game-btn" data-tooltip="点击开始/重新修炼，方向键控制移动">
+      <i class="fas fa-play"></i>开始修炼
+    </button>
+    <select id="difficulty" class="game-select" data-tooltip="速度越快难度越高">
+      <option value="100">初入江湖</option>
+      <option value="75">小有名气</option>
+      <option value="50">武林盟主</option>
+    </select>
+  </div>
+
+  <div class="game-legend">
+    <div class="legend-item" >
+      <span class="color-box food"><i class="fas fa-drumstick-bite"></i></span>
+      <span>内力丹</span>
+    </div>
+    <div class="legend-item" >
+      <span class="color-box power-up"><i class="fas fa-gem"></i></span>
+      <span>易筋经</span>
+    </div>
+    <div class="legend-item" >
+      <span class="color-box bomb"><i class="fas fa-skull"></i></span>
+      <span>唐门毒</span>
+    </div>
+  </div>
+
+  <div class="game-canvas-container">
+    <div id="prompt" class="game-prompt">
+      <i class="fas fa-arrows-alt"></i> 使用方向键开始修炼
+    </div>
+  </div>
+  
+  <canvas id="board"></canvas>
+  <div class="game-explanation webfont2">
+    <div class="explanation-section">
+      <h3 class="explanation-title" style="color: #770e1c;">📖 江湖指南</h3>
+      
+      <!-- 身法效率说明 -->
+      <div class="explanation-item">
+        <span class="explanation-icon">🔄</span>
+        <div class="explanation-text">
+          <strong>身法效率</strong>：平均每增长1节长度需要的转向次数<br>
+          <small>数值越低说明操作越精准</small>
+        </div>
+      </div>
+      
+      <div class="explanation-item">
+        <span class="explanation-icon">⏸️</span>
+        <div class="explanation-text">
+            <strong>暂停/继续</strong>：按空格键或P键可随时暂停修炼<br>
+            <small>暂停期间江湖时间停止流动</small>
+        </div>
+      </div>
+      
+      <!-- 难度等级说明 -->
+      <div class="explanation-item">
+        <span class="explanation-icon">⚔️</span>
+        <div class="explanation-text">
+          <strong>修炼难度</strong>：
+          <ul class="difficulty-list">
+            <li><span style="color:#770e1c;">初入江湖</span> - 低速模式 (推荐新手)</li>
+            <li><span style="color:#770e1c;">小有名气</span> - 中速模式 (均衡挑战)</li>
+            <li><span style="color:#770e1c;">武林盟主</span> - 高速模式 (高手专属)</li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- 道具说明 -->
+      <div class="explanation-item">
+        <span class="explanation-icon">🎁</span>
+        <div class="explanation-text">
+          <strong>江湖奇物</strong>：
+          <div class="item-grid">
+            <div class="item-card food">
+              <i class="fas fa-drumstick-bite"></i>
+              <span>内力丹</span>
+              <small>基础食物，增长1节</small>
+            </div>
+            <div class="item-card power-up">
+              <i class="fas fa-gem"></i>
+              <span>易筋经</span>
+              <small>强化道具，瞬间增长3节,无敌5s</small>
+            </div>
+            <div class="item-card bomb">
+              <i class="fas fa-skull"></i>
+              <span>唐门毒</span>
+              <small>危险障碍，触碰即败</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
   <footer class="back-to-top webfont2">
     <a href="#header">↑ 返回顶部</a>
