@@ -9,6 +9,10 @@
   <script src="https://kit.fontawesome.com/8a4abd7143.js" crossorigin="anonymous"></script>
   <script src="game.js"></script>
   <script src="footer.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://unpkg.com/d3-cloud@1.2.5/build/d3.layout.cloud.js"></script>
+  <script src="words-data.js"></script>
+  <script src="wordcloud.js"></script>
 </head>
   
 <body class="webfont2">
@@ -475,6 +479,14 @@
   </div>
 </div>
 
+<!-- 新增词云模块 -->
+<div class="wordcloud-container webfont2">
+  <h2>词云
+    <span class="theme-tag">文学与科学融合的可能性</span>
+  </h2>
+  <div id="word-cloud"></div>
+  <div class="tooltip" id="tooltip"></div>
+</div>
 
   <footer class="back-to-top webfont2">
     <a href="#header">↑ 返回顶部</a>
