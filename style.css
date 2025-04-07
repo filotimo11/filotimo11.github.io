@@ -746,7 +746,7 @@ blockquote {
   position: relative;
 }
 
-#word-cloud {
+#word-cloud, #llm-word-cloud{
   width: 100%;
   height: 70vh;
   min-height: 500px;

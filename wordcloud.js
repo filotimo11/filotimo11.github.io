@@ -56,38 +56,6 @@ function initWordCloud() {
             .transition()
             .duration(800)
             .style("fill-opacity", 1)
-            .on("mouseover", function(event, d) {
-                d3.select(this)
-                    .transition()
-                    .duration(200)
-                    .style("filter", "drop-shadow(0 0 8px rgba(255,215,0,0.6))");
-                
-                const data = wordsData.find(item => item.text === d.text);
-                const tooltip = document.getElementById('tooltip');
-                tooltip.innerHTML = `<strong>${data.text}</strong><div>词频: ${data.rawFrequency}</div>`;
-                tooltip.style.opacity = 1;
-                tooltip.style.left = `${event.pageX}px`;
-                tooltip.style.top = `${event.pageY - 40}px`;
-            })
-            .on("mouseout", function() {
-                d3.select(this)
-                    .transition()
-                    .duration(200)
-                    .style("filter", "none");
-                
-                document.getElementById('tooltip').style.opacity = 0;
-            })
-            .on("click", function() {
-                d3.select(this)
-                    .transition()
-                    .duration(300)
-                    .style("font-weight", "600")
-                    .style("fill", "#ffd700")
-                    .transition()
-                    .delay(1000)
-                    .style("font-weight", "normal")
-                    .style("fill", () => CONFIG.colors[Math.random() * CONFIG.colors.length | 0]);
-            });
     }
 
     window.addEventListener('resize', () => {
