@@ -1,19 +1,29 @@
-# 3220101958
+# web-assignment
 
-#### 介绍
-    这是李承轩的web程序设计的作业仓库
+This template should help get you started developing with Vue 3 in Vite.
 
-    分支 master
-        最基本的html文件框架及自我介绍
-    分支 hw2    
-        增加了阅读书目等的个人主页，补充了个人介绍
-    分支 hw3
-        增加了对html文件文字、图片等内容的样式的变化与修饰
-    分支 hw4
-        利用FLEXBOX布局，模仿他人个人主页完成了个人主页的进一步优化
-    分支 hw5
-        利用html、css、js文件，制作添加了”武侠版贪吃蛇“小游戏
-    分支 hw6
-        增加了使用文章生成的词云文件
+## Recommended IDE Setup
 
-        未完待续……
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+
+## Customize configuration
+
+See [Vite Configuration Reference](https://vite.dev/config/).
+
+## Project Setup
+
+```sh
+npm install
+```
+
+### Compile and Hot-Reload for Development
+
+```sh
+npm run dev
+```
+
+### Compile and Minify for Production
+
+```sh
+npm run build
+```
