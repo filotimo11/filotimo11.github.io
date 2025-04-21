@@ -1,0 +1,902 @@
+[
+    {
+      "text": "数据",
+      "size": 57,
+      "rawFrequency": 54
+    },
+    {
+      "text": "科学",
+      "size": 51,
+      "rawFrequency": 25
+    },
+    {
+      "text": "算法",
+      "size": 51,
+      "rawFrequency": 24
+    },
+    {
+      "text": "技术",
+      "size": 50,
+      "rawFrequency": 23
+    },
+    {
+      "text": "分析",
+      "size": 50,
+      "rawFrequency": 21
+    },
+    {
+      "text": "文学",
+      "size": 49,
+      "rawFrequency": 19
+    },
+    {
+      "text": "融合",
+      "size": 46,
+      "rawFrequency": 14
+    },
+    {
+      "text": "模型",
+      "size": 44,
+      "rawFrequency": 11
+    },
+    {
+      "text": "预测",
+      "size": 44,
+      "rawFrequency": 11
+    },
+    {
+      "text": "情感",
+      "size": 43,
+      "rawFrequency": 10
+    },
+    {
+      "text": "优化",
+      "size": 42,
+      "rawFrequency": 9
+    },
+    {
+      "text": "研究",
+      "size": 42,
+      "rawFrequency": 9
+    },
+    {
+      "text": "系统",
+      "size": 42,
+      "rawFrequency": 9
+    },
+    {
+      "text": "伦理",
+      "size": 40,
+      "rawFrequency": 7
+    },
+    {
+      "text": "人文",
+      "size": 40,
+      "rawFrequency": 7
+    },
+    {
+      "text": "机器",
+      "size": 40,
+      "rawFrequency": 7
+    },
+    {
+      "text": "数字",
+      "size": 40,
+      "rawFrequency": 7
+    },
+    {
+      "text": "文理",
+      "size": 38,
+      "rawFrequency": 6
+    },
+    {
+      "text": "交叉",
+      "size": 38,
+      "rawFrequency": 6
+    },
+    {
+      "text": "文明",
+      "size": 38,
+      "rawFrequency": 6
+    },
+    {
+      "text": "人类",
+      "size": 38,
+      "rawFrequency": 6
+    },
+    {
+      "text": "文化",
+      "size": 37,
+      "rawFrequency": 5
+    },
+    {
+      "text": "社会学",
+      "size": 37,
+      "rawFrequency": 5
+    },
+    {
+      "text": "信息系统",
+      "size": 37,
+      "rawFrequency": 5
+    },
+    {
+      "text": "信息",
+      "size": 37,
+      "rawFrequency": 5
+    },
+    {
+      "text": "结构",
+      "size": 37,
+      "rawFrequency": 5
+    },
+    {
+      "text": "用户",
+      "size": 37,
+      "rawFrequency": 5
+    },
+    {
+      "text": "世纪",
+      "size": 37,
+      "rawFrequency": 5
+    },
+    {
+      "text": "医疗",
+      "size": 37,
+      "rawFrequency": 5
+    },
+    {
+      "text": "语言",
+      "size": 37,
+      "rawFrequency": 5
+    },
+    {
+      "text": "文本",
+      "size": 34,
+      "rawFrequency": 4
+    },
+    {
+      "text": "解析",
+      "size": 34,
+      "rawFrequency": 4
+    },
+    {
+      "text": "驱动",
+      "size": 34,
+      "rawFrequency": 4
+    },
+    {
+      "text": "评估",
+      "size": 34,
+      "rawFrequency": 4
+    },
+    {
+      "text": "传播",
+      "size": 34,
+      "rawFrequency": 4
+    },
+    {
+      "text": "逻辑",
+      "size": 34,
+      "rawFrequency": 4
+    },
+    {
+      "text": "计算机科学",
+      "size": 34,
+      "rawFrequency": 4
+    },
+    {
+      "text": "经济学",
+      "size": 34,
+      "rawFrequency": 4
+    },
+    {
+      "text": "经济",
+      "size": 34,
+      "rawFrequency": 4
+    },
+    {
+      "text": "威尔逊",
+      "size": 34,
+      "rawFrequency": 4
+    },
+    {
+      "text": "IMIS",
+      "size": 34,
+      "rawFrequency": 4
+    },
+    {
+      "text": "专业",
+      "size": 34,
+      "rawFrequency": 4
+    },
+    {
+      "text": "跨学科",
+      "size": 34,
+      "rawFrequency": 4
+    },
+    {
+      "text": "问题",
+      "size": 34,
+      "rawFrequency": 4
+    },
+    {
+      "text": "范式",
+      "size": 34,
+      "rawFrequency": 4
+    },
+    {
+      "text": "重构",
+      "size": 34,
+      "rawFrequency": 4
+    },
+    {
+      "text": "供应链",
+      "size": 31,
+      "rawFrequency": 3
+    },
+    {
+      "text": "交响",
+      "size": 31,
+      "rawFrequency": 3
+    },
+    {
+      "text": "训练",
+      "size": 31,
+      "rawFrequency": 3
+    },
+    {
+      "text": "设计",
+      "size": 31,
+      "rawFrequency": 3
+    },
+    {
+      "text": "管理",
+      "size": 31,
+      "rawFrequency": 3
+    },
+    {
+      "text": "深度",
+      "size": 31,
+      "rawFrequency": 3
+    },
+    {
+      "text": "城市",
+      "size": 31,
+      "rawFrequency": 3
+    },
+    {
+      "text": "自然语言",
+      "size": 31,
+      "rawFrequency": 3
+    },
+    {
+      "text": "可能性",
+      "size": 31,
+      "rawFrequency": 3
+    },
+    {
+      "text": "时代",
+      "size": 31,
+      "rawFrequency": 3
+    },
+    {
+      "text": "鸿沟",
+      "size": 31,
+      "rawFrequency": 3
+    },
+    {
+      "text": "重塑",
+      "size": 31,
+      "rawFrequency": 3
+    },
+    {
+      "text": "气候",
+      "size": 31,
+      "rawFrequency": 3
+    },
+    {
+      "text": "诗行",
+      "size": 31,
+      "rawFrequency": 3
+    },
+    {
+      "text": "实验室",
+      "size": 31,
+      "rawFrequency": 3
+    },
+    {
+      "text": "小说",
+      "size": 31,
+      "rawFrequency": 3
+    },
+    {
+      "text": "时间",
+      "size": 31,
+      "rawFrequency": 3
+    },
+    {
+      "text": "社会",
+      "size": 31,
+      "rawFrequency": 3
+    },
+    {
+      "text": "可视化",
+      "size": 31,
+      "rawFrequency": 3
+    },
+    {
+      "text": "视角",
+      "size": 31,
+      "rawFrequency": 3
+    },
+    {
+      "text": "领域",
+      "size": 31,
+      "rawFrequency": 3
+    },
+    {
+      "text": "利用",
+      "size": 31,
+      "rawFrequency": 3
+    },
+    {
+      "text": "人性",
+      "size": 31,
+      "rawFrequency": 3
+    },
+    {
+      "text": "工具",
+      "size": 31,
+      "rawFrequency": 3
+    },
+    {
+      "text": "网络",
+      "size": 31,
+      "rawFrequency": 3
+    },
+    {
+      "text": "比特",
+      "size": 31,
+      "rawFrequency": 3
+    },
+    {
+      "text": "AI",
+      "size": 31,
+      "rawFrequency": 3
+    },
+    {
+      "text": "NLP",
+      "size": 31,
+      "rawFrequency": 3
+    },
+    {
+      "text": "协同",
+      "size": 31,
+      "rawFrequency": 3
+    },
+    {
+      "text": "金融",
+      "size": 31,
+      "rawFrequency": 3
+    },
+    {
+      "text": "凸显",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "环境",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "Python",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "Information",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "人类文明",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "统一性",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "影响",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "监控",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "革新",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "革命",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "波动",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "融通",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "联网",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "工业革命",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "红楼梦",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "荷兰",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "维度",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "莎士比亚",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "关联",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "智慧",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "亚马逊",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "关怀",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "乌托邦",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "斯诺",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "科学家",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "宇宙",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "深层",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "对话",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "哲学",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "森林",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "学科",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "生态",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "隐喻",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "解码",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "建模",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "策略",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "心理",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "图式",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "团队",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "神经网络",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "戏剧",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "模式",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "经典",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "文化史",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "数字化",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "生物",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "思维",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "温度",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "交通流量",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "体验",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "韵律",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "媒体",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "评分",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "公平性",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "词汇",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "动态",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "殖民",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "语义",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "研究者",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "学生",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "理想",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "规律",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "茧房",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "核心",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "存储",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "生物医学",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "数据库",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "智能",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "决策",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "理论",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "效果",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "方法",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "平台",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "定价",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "信用",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "公共卫生",
+      "size": 26,
+      "rawFrequency": 2
+    },
+    {
+      "text": "字符",
+      "size": 12,
+      "rawFrequency": 1
+    },
+    {
+      "text": "民主",
+      "size": 12,
+      "rawFrequency": 1
+    },
+    {
+      "text": "心电图",
+      "size": 12,
+      "rawFrequency": 1
+    },
+    {
+      "text": "绘制",
+      "size": 12,
+      "rawFrequency": 1
+    },
+    {
+      "text": "书籍",
+      "size": 12,
+      "rawFrequency": 1
+    },
+    {
+      "text": "宏观",
+      "size": 12,
+      "rawFrequency": 1
+    },
+    {
+      "text": "脉络",
+      "size": 12,
+      "rawFrequency": 1
+    },
+    {
+      "text": "文学史",
+      "size": 12,
+      "rawFrequency": 1
+    },
+    {
+      "text": "证据",
+      "size": 12,
+      "rawFrequency": 1
+    },
+    {
+      "text": "差异",
+      "size": 12,
+      "rawFrequency": 1
+    },
+    {
+      "text": "方面",
+      "size": 12,
+      "rawFrequency": 1
+    },
+    {
+      "text": "虚词",
+      "size": 12,
+      "rawFrequency": 1
+    },
+    {
+      "text": "后者",
+      "size": 12,
+      "rawFrequency": 1
+    },
+    {
+      "text": "特征",
+      "size": 12,
+      "rawFrequency": 1
+    },
+    {
+      "text": "段落",
+      "size": 12,
+      "rawFrequency": 1
+    },
+    {
+      "text": "爵士",
+      "size": 12,
+      "rawFrequency": 1
+    },
+    {
+      "text": "用词",
+      "size": 12,
+      "rawFrequency": 1
+    },
+    {
+      "text": "之谜",
+      "size": 12,
+      "rawFrequency": 1
+    },
+    {
+      "text": "身份",
+      "size": 12,
+      "rawFrequency": 1
+    },
+    {
+      "text": "作者",
+      "size": 12,
+      "rawFrequency": 1
+    },
+    {
+      "text": "指纹",
+      "size": 12,
+      "rawFrequency": 1
+    },
+    {
+      "text": "节奏",
+      "size": 12,
+      "rawFrequency": 1
+    },
+    {
+      "text": "汽笛声",
+      "size": 12,
+      "rawFrequency": 1
+    },
+    {
+      "text": "工厂",
+      "size": 12,
+      "rawFrequency": 1
+    },
+    {
+      "text": "钟表",
+      "size": 12,
+      "rawFrequency": 1
+    },
+    {
+      "text": "悬念",
+      "size": 12,
+      "rawFrequency": 1
+    },
+    {
+      "text": "渐进式",
+      "size": 12,
+      "rawFrequency": 1
+    },
+    {
+      "text": "作家",
+      "size": 12,
+      "rawFrequency": 1
+    }
+  ]

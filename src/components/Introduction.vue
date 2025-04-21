@@ -1,0 +1,884 @@
+<template>
+  <div class="about-section">
+    <div class="left-section">
+      <div class="profile-block">
+        <div class="avatar-container">
+          <img :src="profileData.introduction.avatar" :alt="profileData.personal.name" />
+        </div>      
+        <div class="profile-info webfont2">
+          <h1 class="profile-title" :style="styles.profileTitle">
+            <span class="highlight" :style="styles.highlight">Hello</span><br />
+            大家好，这里是 <span class="highlight" :style="styles.highlight">{{ profileData.personal.name }}</span><br />
+            个人主页!
+          </h1>
+          <div class="contact-links">
+            <a :href="`mailto:${profileData.introduction.contact.email}`" 
+               class="contact-item"
+               :title="profileData.introduction.contact.email">
+              <i class="fas fa-envelope"></i>
+            </a>
+            <a href="https://wx.qq.com/" 
+               class="contact-item wechat-trigger"
+               @mouseenter="showWechatQR = true"
+               @mouseleave="showWechatQR = false">
+              <i class="fab fa-weixin"></i>
+              <div class="qr-code" v-show="showWechatQR">
+                <img :src="profileData.introduction.contact.wechat.qr" alt="微信二维码">
+                <p>扫码添加微信</p>
+              </div>
+            </a>
+            <a :href="`https://im.qq.com`" 
+               class="contact-item"
+               :title="`QQ: ${profileData.introduction.contact.qq}`">
+              <i class="fab fa-qq"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="institution-info webfont2">
+      <p class="position">{{ profileData.introduction.position }}</p>
+      <div v-for="(affiliation, index) in profileData.introduction.affiliations" 
+           :key="index"
+           class="affiliation">
+        {{ affiliation.name }}
+        <a :href="affiliation.link">{{ affiliation.label }}</a>
+      </div>
+    </div>
+  </div>
+</template>
+ 
+<script setup>
+import { ref, reactive } from 'vue'
+import profileData from '../assets/data.json'
+ 
+const showWechatQR = ref(false)
+ 
+
+const styles = reactive({
+  profileTitle: {
+    fontSize: '1.8rem',
+    lineHeight: 1.5
+  },
+  highlight: {
+    color: '#770e1c',
+    fontWeight: 700
+  }
+})
+</script>
+
+<style scoped>
+@font-face {
+  font-family: 'my-web-font1';
+  src: url('/fonts/字魂武林江湖体.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'my-web-font2';
+  src: url('/fonts/AiDianQuYaYuan-2.ttf') format('truetype');
+}
+
+ .webfont1{
+  font-family: 'my-web-font1' !important;
+  font-size: 1.6rem;
+
+  } 
+
+ .webfont2{
+  font-family: 'my-web-font2' !important;
+  font-size: 1.2rem;
+ }
+
+ em{
+  font-size: 1.6rem;
+ }
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  max-height:35px;
+  margin: 0 auto;
+  padding: 12px;
+  border-bottom: 1px solid #e0e0e0;
+  background: white;
+  position: relative;
+  font-size: 1.4rem !important;
+}
+
+#header .links .hamb {
+  cursor: pointer;
+  z-index: 999;
+  padding: 5px 20px;
+  display: block;
+}
+
+#header .links .hamb-line {
+  background: black;
+  display: block;
+  height: 2px;
+  position: relative;
+  width: 24px;
+  margin: 5px 0;
+}
+
+#header .links .nav {
+  width: 100%;
+  position: fixed;
+  background-color: #f1f3f4;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease-out;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  top: 60px;
+  left: 0;
+}
+
+#header .links .menu {
+  padding: 15px 0;
+}
+
+#header .links .menu a {
+  display: block;
+  padding: 10px 20px;
+  color: #333;
+  text-decoration: none;
+}
+
+@media screen and (min-width: 768px) {
+  #header .links .hamb {
+    display: none;
+  }
+  
+  #header .links .nav {
+    position: static;
+    background: transparent;
+    max-height: none !important;
+    box-shadow: none;
+    width: auto;
+  }
+
+  #header .links .menu {
+    display: flex;
+    gap: 40px;
+    padding: 0;
+  }
+
+  #header .links .menu a {
+    padding: 5px 0;
+  }
+}
+
+#header .links a.lab {
+  color: #770e1c;
+  font-weight: 500;
+}
+
+#header .links a.selected {
+  font-weight: 800;
+  color: #000;
+}
+
+#header .links a:hover {
+  color: #fff;
+  background-color: #770e1c;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  padding-left: 25px;
+  padding-right: 25px;
+  margin-left: -20px;
+  margin-right: -20px;
+}
+
+
+/* 整体布局 */
+.about-section {
+  display: flex;
+  gap: 3rem;
+  max-width: 1000px;
+  max-height:200px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+/* 左边复合区块 */
+.left-section {
+  flex: 1;
+}
+
+.profile-block {
+  display: flex;
+  gap: 1.2rem;
+  align-items: flex-start;
+}
+
+/* 头像区块 */
+.avatar-container {
+  flex-shrink: 0;
+}
+
+.avatar-container img {
+  width: 120px;
+  height: 120px;
+  border-radius: 80%;
+  object-fit: cover;
+}
+
+/* 文字介绍区块 */
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.profile-title {
+  font-size: 1.8rem;
+  line-height: 1.5;
+  color: #333;
+  margin: 0;
+}
+
+.highlight {
+  color: #770e1c;
+  font-weight: 700;
+}
+
+/* 联系方式图标 */
+.contact-links {
+  display: flex;
+  gap: 0.7rem;
+}
+
+.contact-item {
+  font-size: 1rem;
+  color: #666;
+  transition: all 0.2s ease;
+}
+
+.contact-item:hover {
+  color: #770e1c;
+  transform: translateY(-2px);
+}
+
+.contact-item:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.9);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* 微信二维码样式 */
+.qr-code {
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+  z-index: 1000;
+  width: 180px;
+  text-align: center;
+}
+
+.qr-code img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.qr-code p {
+  font-size: 0.8rem;
+  color: #666;
+  margin: 0;
+}
+
+/* 鼠标悬停显示二维码 */
+.wechat-trigger:hover .qr-code {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 右边机构信息 */
+.institution-info {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-left: auto; 
+  text-align: right;
+  padding-left: 3rem;
+  border-left: 2px solid #eee;
+}
+
+.position {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #770e1c;
+  margin: 0;
+}
+
+.affiliation {
+  line-height: 0.6;
+  color: #444;
+  font-size: 1.4rem;
+}
+
+.affiliation a {
+  color: #770e1c;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.affiliation a:hover {
+  text-decoration: underline;
+}
+
+/* 核心样式 */
+.content-section {
+  background: white;
+  width: 100%;
+  padding: 15px;
+}
+
+.summary {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding:0;
+  line-height: 1.6;
+  font-size: 1.6rem ;
+}
+
+blockquote {
+  border-left: 4px solid #770e1c;
+  margin: 0;
+  padding: 0.5rem 1.5rem;
+  font-style: italic;
+  color: #444;
+}
+
+/* 主题卡片布局 */
+/* 容器样式 */
+.themes-container {
+  padding: 0;
+  background: white;
+}
+
+.themes-grid {
+  display: flex;
+  gap: 1rem;
+  max-width: 1100px;
+  margin: 0 auto; 
+  justify-content: space-between;
+}
+
+.theme-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;  
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex: 1 1 30%;  
+  min-width: 300px; 
+  margin: 0 1.5%; 
+  max-width: 360px;  
+}
+
+.image-container {
+  position: relative;
+  height: 250px;
+}
+
+.theme-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* 初始标题样式 */
+.static-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 1.2rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 30%, transparent);
+  color: white;
+  font-size: 1.3rem;
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* 悬停覆盖层 */
+.hover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #770e1c5d;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+  padding: 2rem;
+  z-index: 2;
+}
+
+.introduction{
+  color: #eee;
+  font-size: 1.6rem;
+}
+/* 悬停内容 */
+.overlay-content {
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}
+
+/* 悬停时效果 */
+.theme-card:hover .static-title {
+  opacity: 0;
+}
+
+.theme-card:hover .hover-overlay {
+  opacity: 1;
+}
+
+.theme-card:hover .overlay-content {
+  transform: translateY(0);
+}
+
+.theme-card:hover .theme-image {
+  transform: scale(1.05);
+}
+
+/* 悬停标题样式 */
+.hover-title {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #fff;
+}
+
+.publications-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.publication-card {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.thumbnail-container {
+  flex: 0 0 200px;
+}
+
+.thumbnail-container img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #dadce0;
+}
+
+.publication-info {
+  flex: 1;
+}
+
+.publication-title {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.authors-list {
+  color: #5f6368;
+  margin-bottom: 8px;
+}
+
+.venue-info {
+  color: #5f6368;
+  margin-bottom: 12px;
+}
+
+.resources-links {
+  display: flex;
+  gap: 15px;
+  padding-top: 10px;
+}
+
+.tooltip-icon {
+  color: #666;
+  transition: color 0.2s;
+}
+
+.tooltip-icon:hover {
+  color: #770e1c;
+}
+
+.award-badge {
+  color: #770e1c;
+  margin-left: 10px;
+}
+
+.back-to-top {
+  display: none; 
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(119,14,28,0.9);
+  padding: 12px 25px;
+  border-radius: 25px;
+  z-index: 1000;
+  transition: opacity 0.3s; 
+}
+
+.back-to-top a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-to-top a:hover {
+  opacity: 0.9;
+}
+
+
+/* 游戏容器 */
+.game-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(119,14,28,0.1);
+  position: relative;
+}
+
+.section-title {
+  color: #770e1c;
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.theme-tag {
+  font-size: 1.2rem;
+  background: #770e1c;
+  color: white;
+  padding: 2px 10px;
+  border-radius: 15px;
+  vertical-align: middle;
+}
+
+/* 统计信息 */
+.game-stats {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.4rem;
+  background: #f8f0f2;
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: 1px solid #ffe6eb;
+}
+
+/* 控制按钮 */
+.game-controls {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.game-btn {
+  background: #770e1c;
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.2rem;
+}
+
+.game-btn:hover {
+  background: #5a0a16;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(119,14,28,0.3);
+}
+
+.game-select {
+  padding: 10px 20px;
+  border: 2px solid #770e1c;
+  border-radius: 30px;
+  background: white;
+  color: #770e1c;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+/* 图例 */
+.game-legend {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  margin: 20px 0;
+  padding: 15px;
+  background: #fff5f7;
+  border-radius: 15px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.1rem;
+}
+
+.color-box {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.food { background: #ffd700; color: #ffc209; }
+.power-up { background: #4169e1; color: rgb(23, 31, 255); }
+.bomb { background: #dc143c; color: rgb(241, 22, 22); }
+
+/* 画布样式 */
+#board {
+  border: 3px solid #770e1c;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(119,14,28,0.15);
+  margin: 0 auto;
+  display: block;
+  background: #2c3e50;
+  position: relative; 
+}
+
+.game-explanation {
+  margin: 30px auto 0;
+  max-width: 800px;
+  padding: 20px;
+  background: #fff8fa;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(119,14,28,0.08);
+}
+
+.explanation-title {
+  font-size: 1.8rem;
+  border-bottom: 2px solid #ffe6eb;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+/* 说明项布局 */
+.explanation-item {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+  align-items: flex-start;
+}
+
+.explanation-icon {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+.explanation-text {
+  flex: 1;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* 难度列表 */
+.difficulty-list {
+  list-style: none;
+  padding-left: 20px;
+  margin: 10px 0;
+}
+
+.difficulty-list li {
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.difficulty-list li::before {
+  content: "•";
+  color: #770e1c;
+  position: absolute;
+  left: -20px;
+}
+
+/* 道具网格布局 */
+.item-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.item-card {
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.item-card:hover {
+  transform: translateY(-3px);
+}
+
+.item-card i {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* 不同道具颜色 */
+.food { background: #fff9e6; border: 1px solid #ffd700; }
+.power-up { background: #e6f0ff; border: 1px solid #4169e1; }
+.bomb { background: #ffe6eb; border: 1px solid #dc143c; }
+
+.game-prompt {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  color: #fff;
+  font-size: 1.2rem;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  pointer-events: none;
+}
+
+.wordcloud-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 30px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(119,14,28,0.1);
+  border: 1px solid #ffe6eb;
+  position: relative;
+}
+
+.wordcloud-container h2 {
+  color: #770e1c;
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+#word-cloud, #llm-word-cloud{
+  width: 100%;
+  height: 70vh;
+  min-height: 500px;
+  background: linear-gradient(145deg, #fff8fa 0%, #fff5f7 100%);
+  border-radius: 12px;
+  margin: 20px 0;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+#word-cloud:hover {
+  box-shadow: inset 0 0 15px rgba(119,14,28,0.1);
+}
+
+.tooltip {
+  position: fixed;
+  padding: 12px 18px;
+  background: linear-gradient(145deg, rgba(119,14,28,0.95), rgba(90,10,22,0.95));
+  color: #fff;
+  border-radius: 8px;
+  font-family: 'my-web-font2';
+  font-size: 14px;
+  line-height: 1.5;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 15px rgba(119,14,28,0.2);
+  border: 1px solid #ffd700;
+  max-width: 300px;
+  transform: translate(-50%, -110%) scale(0.95);
+  z-index: 9999;
+}
+
+.tooltip::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(145deg, rgba(119,14,28,0.95), rgba(90,10,22,0.95));
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.tooltip strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #ffd700;
+  font-size: 1.1em;
+}
+
+@media (max-width: 768px) {
+  #word-cloud {
+      height: 60vh;
+      min-height: 400px;
+  }
+  
+  .tooltip {
+      font-size: 12px;
+      max-width: 200px;
+  }
+}
+</style>

@@ -1,0 +1,39 @@
+{
+  "difficultyOptions": [
+    {
+      "value": 100,
+      "label": "初入江湖",
+      "desc": "低速模式 (推荐新手)"
+    },
+    {
+      "value": 75,
+      "label": "小有名气",
+      "desc": "中速模式 (均衡挑战)"
+    },
+    {
+      "value": 50,
+      "label": "武林盟主",
+      "desc": "高速模式 (高手专属)"
+    }
+  ],
+  "gameItems": [
+    {
+      "type": "food",
+      "icon": "drumstick-bite",
+      "name": "内力丹",
+      "desc": "基础食物，增长1节"
+    },
+    {
+      "type": "power-up",
+      "icon": "gem",
+      "name": "易筋经",
+      "desc": "强化道具，瞬间增长3节,无敌5s"
+    },
+    {
+      "type": "bomb",
+      "icon": "skull",
+      "name": "唐门毒",
+      "desc": "危险障碍，触碰即败"
+    }
+  ]
+}

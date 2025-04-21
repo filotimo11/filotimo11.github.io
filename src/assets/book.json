@@ -1,0 +1,73 @@
+[
+  {
+    "title": "格林童话：童趣与智慧的相互交织",
+    "image": "images/格林童话.jpg",
+    "author": "雅各布·格林&威廉·格林",
+    "foreignAuthor": "Jacob Grimm & Wilhelm Grimm",
+    "readDate": "2015-6-24",
+    "purchaseLink": "https://item.jd.com/12615767.html"
+  },
+  {
+    "title": "安徒生童话：跨越时空的奇幻之旅",
+    "image": "images/安徒生童话.jpg",
+    "author": "安徒生",
+    "foreignAuthor": "Hans Christian Andersen",
+    "readDate": "2014-8-15", 
+    "purchaseLink": "https://item.jd.com/12258385.html"
+  },
+  {
+    "title": "阿衰：校园生活的幽默实录",
+    "image": "images/阿衰.jpg",
+    "author": "猫小乐",
+    "readDate": "2016-3-8",
+    "purchaseLink": "https://item.jd.com/10098084864208.html"
+  },
+  {
+    "title": "王尔德童话：唯美主义的寓言诗篇",
+    "image": "images/王尔德童话.jpg",
+    "author": "奥斯卡·王尔德",
+    "foreignAuthor": "Oscar Wilde",
+    "readDate": "2017-11-3",
+    "purchaseLink": "https://item.jd.com/10050936154121.html"
+  },
+  {
+    "title": "天龙八部：武侠世界的史诗画卷",
+    "image": "images/天龙八部.jpg",
+    "author": "金庸",
+    "foreignAuthor": "Louis Cha",
+    "readDate": "2018-5-20",
+    "purchaseLink": "https://item.jd.com/10090103283705.html"
+  },
+  {
+    "title": "射雕英雄传：侠之大者的成长史诗",
+    "image": "images/射雕英雄传.jpg", 
+    "author": "金庸",
+    "foreignAuthor": "Louis Cha",
+    "readDate": "2019-2-14",
+    "purchaseLink": "https://item.jd.com/10090103283705.html"
+  },
+  {
+    "title": "笑傲江湖：政治隐喻的武侠寓言",
+    "image": "images/笑傲江湖.jpg",
+    "author": "金庸",
+    "foreignAuthor": "Louis Cha",
+    "readDate": "2020-9-1",
+    "purchaseLink": "https://item.jd.com/10090103283705.html"
+  },
+  {
+    "title": "雪山飞狐：悬疑交织的江湖恩怨",
+    "image": "images/雪山飞狐.jpg",
+    "author": "金庸",
+    "foreignAuthor": "Louis Cha",
+    "readDate": "2021-7-7",
+    "purchaseLink": "https://item.jd.com/12732313.html"
+  },
+  {
+    "title": "淘气包马小跳：童真年代的成长日记",
+    "image": "images/淘气包马小跳.jpg",
+    "author": "杨红樱",
+    "foreignAuthor": "Yang Hongying",
+    "readDate": "2022-4-18",
+    "purchaseLink": "https://item.jd.com/10136123535205.html"
+  }
+]

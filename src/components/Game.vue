@@ -1,3 +1,370 @@
+<template>
+  <div class="game-container webfont2">
+    <h2 class="section-title">
+      武侠主题贪吃蛇
+      <span class="theme-tag">江湖版</span>
+    </h2>
+
+    <div class="game-stats">
+      <div class="stat-item">
+        <i class="fas fa-dragon"></i>
+        <span>当前长度：<span>{{ snakeLength }}</span></span>
+      </div>
+      <div class="stat-item">
+        <i class="fas fa-yin-yang"></i>
+        <span>身法效率：<span>{{ avgTurns }}</span></span>
+      </div>
+    </div>
+
+    <div class="game-controls">
+      <button @click="handleStart" class="game-btn">
+        <i class="fas fa-play"></i>{{ gameStarted ? '重新开始' : '开始修炼' }}
+      </button>
+      <select v-model="selectedDifficulty" class="game-select">
+        <option v-for="option in difficultyOptions" :value="option.value">
+          {{ option.label }}
+        </option>
+      </select>
+    </div>
+
+    <div class="game-legend">
+      <div v-for="item in gameItems" :key="item.type" class="legend-item">
+        <span :class="['color-box', item.type]"><i :class="['fas', `fa-${item.icon}`]"></i></span>
+        <span>{{ item.name }}</span>
+      </div>
+    </div>
+
+    <div class="game-canvas-container">
+      <canvas ref="gameCanvas" id="board"></canvas>
+    </div>
+
+    <GameExplanation :difficulty-options="difficultyOptions" :game-items="gameItems" />
+  </div>
+</template>
+
+
+<script setup>
+import { ref, onMounted, onUnmounted, computed } from 'vue'
+import GameExplanation from './GameExplanation.vue'
+import gameData from '../assets/gameData.json'
+
+const { difficultyOptions, gameItems } = gameData
+const gameCanvas = ref(null)
+const selectedDifficulty = ref(100)
+const gameStarted = ref(false)
+const showPrompt = ref(true)
+
+// 游戏核心状态
+const total_row = 20;
+const total_col = 20;
+const blockSize = 25;
+
+// 响应式游戏变量
+const snakeX = ref(blockSize * 5)
+const snakeY = ref(blockSize * 5)
+const speedX = ref(0)  // 初始速度设为0
+const speedY = ref(0)
+const snakeBody = ref([])
+const foodX = ref(0)
+const foodY = ref(0)
+const gameOver = ref(false)
+const turnCount = ref(-1)
+const bombX = ref(0)
+const bombY = ref(0)
+const isBombActive = ref(false)
+const powerUpX = ref(0)
+const powerUpY = ref(0)
+const isPowerUpActive = ref(false)
+const isPowerMode = ref(false)
+const isPaused = ref(false)
+
+// 计算属性必须放在顶层作用域
+const snakeLength = computed(() => snakeBody.value.length + 1)
+const avgTurns = computed(() => {
+  return snakeLength.value > 1 
+    ? (turnCount.value / (snakeLength.value - 1)).toFixed(2)
+    : '0.00'
+})
+
+let gameInterval = null
+let context = null
+
+// 函数定义必须放在顶层作用域
+const placeFood = () => {
+  foodX.value = Math.floor(Math.random() * (total_col - 2) + 1) * blockSize
+  foodY.value = Math.floor(Math.random() * (total_row - 2) + 1) * blockSize
+}
+
+const spawnBomb = () => {
+  if (!isBombActive.value) {
+    bombX.value = Math.floor(Math.random() * total_col) * blockSize
+    bombY.value = Math.floor(Math.random() * total_row) * blockSize
+    isBombActive.value = true
+    setTimeout(() => isBombActive.value = false, 5000)
+  }
+}
+
+const spawnPowerUp = () => {
+  if (!isPowerUpActive.value) {
+    const edge = Math.floor(Math.random() * 4)
+    switch (edge) {
+      case 0:
+        powerUpX.value = 0
+        powerUpY.value = Math.floor(Math.random() * total_row) * blockSize
+        break
+      case 1:
+        powerUpX.value = (total_col - 1) * blockSize
+        powerUpY.value = Math.floor(Math.random() * total_row) * blockSize
+        break
+      case 2:
+        powerUpX.value = Math.floor(Math.random() * total_col) * blockSize
+        powerUpY.value = 0
+        break
+      case 3:
+        powerUpX.value = Math.floor(Math.random() * total_col) * blockSize
+        powerUpY.value = (total_row - 1) * blockSize
+        break
+    }
+    isPowerUpActive.value = true
+    setTimeout(() => isPowerUpActive.value = false, 5000)
+  }
+}
+
+const initGame = () => {
+  const board = gameCanvas.value;
+  if (!board) {
+    console.error("Canvas元素未正确初始化");
+    return;
+  }
+  context = board.getContext("2d")
+  board.height = total_row * blockSize
+  board.width = total_col * blockSize
+  placeFood()
+  spawnBomb()
+  spawnPowerUp()
+}
+
+const resetGame = () => {
+  // 重置蛇的状态
+  snakeX.value = blockSize * 5
+  snakeY.value = blockSize * 5
+  speedX.value = 0
+  speedY.value = 0
+  snakeBody.value = []
+  
+  // 重置游戏状态
+  gameOver.value = false
+  turnCount.value = -1
+  isBombActive.value = false
+  isPowerUpActive.value = false
+  isPowerMode.value = false
+  
+  // 重新生成游戏元素
+  placeFood()
+  spawnBomb()
+  spawnPowerUp()
+  
+  // 清空画布
+  const ctx = gameCanvas.value.getContext("2d")
+  ctx.clearRect(0, 0, gameCanvas.value.width, gameCanvas.value.height)
+  
+  // 重置提示状态
+  showPrompt.value = true
+}
+
+const handleStart = () => {
+  if (gameStarted.value) {
+    resetGame()
+  }
+  startGame()
+}
+
+const startGame = () => {
+  gameStarted.value = true
+  gameOver.value = false
+  showPrompt.value = false
+  clearInterval(gameInterval)
+  speedX.value = 1  // 添加初始方向
+  speedY.value = 0
+  gameInterval = setInterval(update, selectedDifficulty.value)
+}
+
+// resetGame 保持不变
+
+const update = () => {
+  if (gameOver.value || isPaused.value) return
+
+  // 清空画布并绘制背景
+  context.fillStyle = "#2c3e50"
+  context.fillRect(0, 0, gameCanvas.value.width, gameCanvas.value.height)
+
+  // 绘制食物
+  context.fillStyle = "yellow"
+  context.fillRect(foodX.value, foodY.value, blockSize, blockSize)
+
+  // 绘制炸弹
+  if (isBombActive.value) {
+    context.fillStyle = "red"
+    context.fillRect(bombX.value, bombY.value, blockSize, blockSize)
+  }
+
+  // 绘制强化道具
+  if (isPowerUpActive.value) {
+    context.fillStyle = "blue"
+    context.fillRect(powerUpX.value, powerUpY.value, blockSize, blockSize)
+  }
+
+  // 更新蛇的位置
+  updateSnake()
+
+  // 碰撞检测
+  checkCollisions()
+
+  // 随机生成新炸弹/道具
+  if (Math.random() < 0.1) spawnBomb()
+  if (Math.random() < 0.2) spawnPowerUp()
+}
+
+const updateSnake = () => {
+  // 移动身体
+  for (let i = snakeBody.value.length - 1; i > 0; i--) {
+    snakeBody.value[i] = [...snakeBody.value[i - 1]]
+  }
+  if (snakeBody.value.length) {
+    snakeBody.value[0] = [snakeX.value, snakeY.value]
+  }
+
+  // 移动头部
+  snakeX.value += speedX.value * blockSize
+  snakeY.value += speedY.value * blockSize
+
+  // 绘制蛇
+  context.fillStyle = isPowerMode.value ? "#FF69B4" : "white"
+  context.fillRect(snakeX.value, snakeY.value, blockSize, blockSize)
+  snakeBody.value.forEach((segment) => {
+    context.fillRect(segment[0], segment[1], blockSize, blockSize)
+  })
+}
+
+const checkCollisions = () => {
+  // 边界检测
+  if (snakeX.value < 0 || snakeX.value >= total_col * blockSize || 
+      snakeY.value < 0 || snakeY.value >= total_row * blockSize) {
+    endGame()
+  }
+
+  // 自身碰撞
+  snakeBody.value.forEach(segment => {
+    if (snakeX.value === segment[0] && snakeY.value === segment[1]) {
+      endGame()
+    }
+  })
+
+  // 食物碰撞
+  if (snakeX.value === foodX.value && snakeY.value === foodY.value) {
+    snakeBody.value.push([foodX.value, foodY.value])
+    placeFood()
+  }
+
+  // 炸弹碰撞
+  if (isBombActive.value && snakeX.value === bombX.value && snakeY.value === bombY.value) {
+    endGame()
+  }
+
+  // 强化道具碰撞
+  if (isPowerUpActive.value && snakeX.value === powerUpX.value && snakeY.value === powerUpY.value) {
+    snakeBody.value.push(...Array(3).fill([powerUpX.value, powerUpY.value]))
+    isPowerMode.value = true
+    setTimeout(() => isPowerMode.value = false, 8000)
+    isPowerUpActive.value = false
+  }
+}
+
+const endGame = () => {
+  gameOver.value = true
+  clearInterval(gameInterval)
+  alert(`游戏结束！得分：${snakeBody.value.length}`)
+  resetGame()
+}
+
+const changeDirection = (e) => {
+  if (!gameStarted.value || gameOver.value) return
+
+  const prevSpeedX = speedX.value
+  const prevSpeedY = speedY.value
+
+  switch(e.code) {
+    case "ArrowUp":
+      if (speedY.value === 0) { // 允许从静止状态启动
+        speedX.value = 0
+        speedY.value = -1
+      }
+      break
+    case "ArrowDown":
+      if (speedY.value === 0) {
+        speedX.value = 0
+        speedY.value = 1
+      }
+      break
+    case "ArrowLeft":
+      if (speedX.value === 0) {
+        speedX.value = -1
+        speedY.value = 0
+      }
+      break
+    case "ArrowRight":
+      if (speedX.value === 0) {
+        speedX.value = 1
+        speedY.value = 0
+      }
+      break
+  }
+
+  if (speedX.value !== prevSpeedX || speedY.value !== prevSpeedY) {
+    turnCount.value++
+  }
+}
+
+// placeFood、spawnBomb、spawnPowerUp 保持不变
+
+const handleKeyDown = (e) => {
+  if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.code)) {
+    e.preventDefault()
+    if (!gameStarted.value) startGame()
+    changeDirection(e)
+  }
+}
+
+const handlePause = (e) => {
+  if (e.code === "Space") {
+    e.preventDefault()  // 阻止空格键默认滚动行为
+    if (gameStarted.value && !gameOver.value) {
+      isPaused.value = !isPaused.value
+      if (isPaused.value) {
+        clearInterval(gameInterval)
+      } else {
+        gameInterval = setInterval(update, selectedDifficulty.value)
+      }
+    }
+  }
+}
+
+onMounted(() => {
+  initGame()
+  document.addEventListener("keydown", handleKeyDown)
+  document.addEventListener("keydown", handlePause)
+  gameCanvas.value.focus()  // 确保canvas获取焦点
+})
+
+onUnmounted(() => {
+  document.removeEventListener("keydown", handleKeyDown)
+  document.removeEventListener("keydown", handlePause)
+  clearInterval(gameInterval)
+})
+</script>
+
+
+<style scoped>
 @font-face {
   font-family: 'my-web-font1';
   src: url('/fonts/字魂武林江湖体.ttf') format('truetype');
@@ -811,3 +1178,4 @@ blockquote {
       max-width: 200px;
   }
 }
+</style>

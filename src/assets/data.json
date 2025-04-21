@@ -1,0 +1,34 @@
+{
+  "personal": {
+    "name": "李承轩"
+  },
+  "introduction": {
+    "avatar": "images/我.jpg",
+    "position": "本科三年级",
+    "affiliations": [
+      {
+        "name": "浙江大学管理学院",
+        "link": "http://www.som.zju.edu.cn/",
+        "label": "Zhejiang University"
+      },
+      {
+        "name": "信息管理与信息系统",
+        "link": "http://www.som.zju.edu.cn/63499/list.htm",
+        "label": "IMIS"
+      },
+      {
+        "name": "中国 杭州",
+        "link": "https://www.hangzhou.gov.cn/",
+        "label": "Hangzhou China"
+      }
+    ],
+    "contact": {
+      "email": "3220101958@zju.edu.cn",
+      "wechat": {
+        "id": "lcx041023_",
+        "qr": "images/wechat-qr.jpg"
+      },
+      "qq": "3302841063"
+    }
+  }
+}
