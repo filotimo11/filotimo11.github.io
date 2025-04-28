@@ -106,7 +106,7 @@ fetchBooks()
   }
   
   .tooltip-icon {
-    color: #666;
+    color: #0b0b0b;
     transition: color 0.2s;
   }
   

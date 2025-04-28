@@ -36,6 +36,14 @@
 
     <div class="game-canvas-container">
       <canvas ref="gameCanvas" id="board"></canvas>
+      <a-result v-if="gameOver" class="game-result" :title="`走火入魔！修为散尽！`" sub-title="江湖险恶，少侠请重新来过">
+        <template #extra>
+          <div class="score-text">当前功力：{{ snakeBody.length }} 重</div>
+          <a-button type="primary" @click="handleStart" class="restart-btn">
+            <i class="fas fa-redo"></i>再入江湖
+          </a-button>
+        </template>
+      </a-result>
     </div>
 
     <GameExplanation :difficulty-options="difficultyOptions" :game-items="gameItems" />
@@ -81,7 +89,7 @@ const isPaused = ref(false)
 // 计算属性必须放在顶层作用域
 const snakeLength = computed(() => snakeBody.value.length + 1)
 const avgTurns = computed(() => {
-  return snakeLength.value > 1 
+  return snakeLength.value > 1
     ? (turnCount.value / (snakeLength.value - 1)).toFixed(2)
     : '0.00'
 })
@@ -151,23 +159,23 @@ const resetGame = () => {
   speedX.value = 0
   speedY.value = 0
   snakeBody.value = []
-  
+
   // 重置游戏状态
   gameOver.value = false
   turnCount.value = -1
   isBombActive.value = false
   isPowerUpActive.value = false
   isPowerMode.value = false
-  
+
   // 重新生成游戏元素
   placeFood()
   spawnBomb()
   spawnPowerUp()
-  
+
   // 清空画布
   const ctx = gameCanvas.value.getContext("2d")
   ctx.clearRect(0, 0, gameCanvas.value.width, gameCanvas.value.height)
-  
+
   // 重置提示状态
   showPrompt.value = true
 }
@@ -248,8 +256,8 @@ const updateSnake = () => {
 
 const checkCollisions = () => {
   // 边界检测
-  if (snakeX.value < 0 || snakeX.value >= total_col * blockSize || 
-      snakeY.value < 0 || snakeY.value >= total_row * blockSize) {
+  if (snakeX.value < 0 || snakeX.value >= total_col * blockSize ||
+    snakeY.value < 0 || snakeY.value >= total_row * blockSize) {
     endGame()
   }
 
@@ -283,8 +291,6 @@ const checkCollisions = () => {
 const endGame = () => {
   gameOver.value = true
   clearInterval(gameInterval)
-  alert(`游戏结束！得分：${snakeBody.value.length}`)
-  resetGame()
 }
 
 const changeDirection = (e) => {
@@ -293,7 +299,7 @@ const changeDirection = (e) => {
   const prevSpeedX = speedX.value
   const prevSpeedY = speedY.value
 
-  switch(e.code) {
+  switch (e.code) {
     case "ArrowUp":
       if (speedY.value === 0) { // 允许从静止状态启动
         speedX.value = 0
@@ -375,26 +381,27 @@ onUnmounted(() => {
   src: url('/fonts/AiDianQuYaYuan-2.ttf') format('truetype');
 }
 
- .webfont1{
+.webfont1 {
   font-family: 'my-web-font1' !important;
   font-size: 1.6rem;
 
-  } 
+}
 
- .webfont2{
+.webfont2 {
   font-family: 'my-web-font2' !important;
   font-size: 1.2rem;
- }
+}
 
- em{
+em {
   font-size: 1.6rem;
- }
+}
+
 #header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   max-width: 1000px;
-  max-height:35px;
+  max-height: 35px;
   margin: 0 auto;
   padding: 12px;
   border-bottom: 1px solid #e0e0e0;
@@ -426,7 +433,7 @@ onUnmounted(() => {
   overflow: hidden;
   max-height: 0;
   transition: max-height 0.3s ease-out;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   top: 60px;
   left: 0;
 }
@@ -446,7 +453,7 @@ onUnmounted(() => {
   #header .links .hamb {
     display: none;
   }
-  
+
   #header .links .nav {
     position: static;
     background: transparent;
@@ -494,7 +501,7 @@ onUnmounted(() => {
   display: flex;
   gap: 3rem;
   max-width: 1000px;
-  max-height:200px;
+  max-height: 200px;
   margin: 0 auto;
   padding: 15px;
 }
@@ -564,14 +571,14 @@ onUnmounted(() => {
   bottom: -35px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0,0,0,0.9);
+  background: rgba(0, 0, 0, 0.9);
   color: #fff;
   padding: 8px 12px;
   border-radius: 4px;
   font-size: 0.9rem;
   white-space: nowrap;
   pointer-events: none;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* 微信二维码样式 */
@@ -583,7 +590,7 @@ onUnmounted(() => {
   background: white;
   padding: 15px;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s;
@@ -616,7 +623,7 @@ onUnmounted(() => {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-  margin-left: auto; 
+  margin-left: auto;
   text-align: right;
   padding-left: 3rem;
   border-left: 2px solid #eee;
@@ -655,9 +662,9 @@ onUnmounted(() => {
 .summary {
   max-width: 1000px;
   margin: 0 auto;
-  padding:0;
+  padding: 0;
   line-height: 1.6;
-  font-size: 1.6rem ;
+  font-size: 1.6rem;
 }
 
 blockquote {
@@ -679,20 +686,20 @@ blockquote {
   display: flex;
   gap: 1rem;
   max-width: 1100px;
-  margin: 0 auto; 
+  margin: 0 auto;
   justify-content: space-between;
 }
 
 .theme-card {
   position: relative;
   overflow: hidden;
-  border-radius: 12px;  
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  flex: 1 1 30%;  
-  min-width: 300px; 
-  margin: 0 1.5%; 
-  max-width: 360px;  
+  flex: 1 1 30%;
+  min-width: 300px;
+  margin: 0 1.5%;
+  max-width: 360px;
 }
 
 .image-container {
@@ -715,7 +722,7 @@ blockquote {
   right: 0;
   margin: 0;
   padding: 1.2rem;
-  background: linear-gradient(to top, rgba(0,0,0,0.7) 30%, transparent);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 30%, transparent);
   color: white;
   font-size: 1.3rem;
   z-index: 1;
@@ -739,10 +746,11 @@ blockquote {
   z-index: 2;
 }
 
-.introduction{
+.introduction {
   color: #eee;
   font-size: 1.6rem;
 }
+
 /* 悬停内容 */
 .overlay-content {
   transform: translateY(20px);
@@ -787,7 +795,7 @@ blockquote {
   padding: 20px;
   background: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .thumbnail-container {
@@ -843,16 +851,16 @@ blockquote {
 }
 
 .back-to-top {
-  display: none; 
+  display: none;
   position: fixed;
   bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(119,14,28,0.9);
+  background: rgba(119, 14, 28, 0.9);
   padding: 12px 25px;
   border-radius: 25px;
   z-index: 1000;
-  transition: opacity 0.3s; 
+  transition: opacity 0.3s;
 }
 
 .back-to-top a {
@@ -876,7 +884,7 @@ blockquote {
   padding: 30px;
   background: #fff;
   border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(119,14,28,0.1);
+  box-shadow: 0 4px 20px rgba(119, 14, 28, 0.1);
   position: relative;
 }
 
@@ -941,7 +949,7 @@ blockquote {
 .game-btn:hover {
   background: #5a0a16;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(119,14,28,0.3);
+  box-shadow: 0 4px 12px rgba(119, 14, 28, 0.3);
 }
 
 .game-select {
@@ -981,19 +989,30 @@ blockquote {
   justify-content: center;
 }
 
-.food { background: #ffd700; color: #ffc209; }
-.power-up { background: #4169e1; color: rgb(23, 31, 255); }
-.bomb { background: #dc143c; color: rgb(241, 22, 22); }
+.food {
+  background: #ffd700;
+  color: #ffc209;
+}
+
+.power-up {
+  background: #4169e1;
+  color: rgb(23, 31, 255);
+}
+
+.bomb {
+  background: #dc143c;
+  color: rgb(241, 22, 22);
+}
 
 /* 画布样式 */
 #board {
   border: 3px solid #770e1c;
   border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(119,14,28,0.15);
+  box-shadow: 0 4px 15px rgba(119, 14, 28, 0.15);
   margin: 0 auto;
   display: block;
   background: #2c3e50;
-  position: relative; 
+  position: relative;
 }
 
 .game-explanation {
@@ -1002,7 +1021,7 @@ blockquote {
   padding: 20px;
   background: #fff8fa;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(119,14,28,0.08);
+  box-shadow: 0 4px 12px rgba(119, 14, 28, 0.08);
 }
 
 .explanation-title {
@@ -1077,9 +1096,20 @@ blockquote {
 }
 
 /* 不同道具颜色 */
-.food { background: #fff9e6; border: 1px solid #ffd700; }
-.power-up { background: #e6f0ff; border: 1px solid #4169e1; }
-.bomb { background: #ffe6eb; border: 1px solid #dc143c; }
+.food {
+  background: #fff9e6;
+  border: 1px solid #ffd700;
+}
+
+.power-up {
+  background: #e6f0ff;
+  border: 1px solid #4169e1;
+}
+
+.bomb {
+  background: #ffe6eb;
+  border: 1px solid #dc143c;
+}
 
 .game-prompt {
   position: absolute;
@@ -1090,7 +1120,7 @@ blockquote {
   color: #fff;
   font-size: 1.2rem;
   text-align: center;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   pointer-events: none;
 }
 
@@ -1100,7 +1130,7 @@ blockquote {
   padding: 30px;
   background: white;
   border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(119,14,28,0.1);
+  box-shadow: 0 4px 20px rgba(119, 14, 28, 0.1);
   border: 1px solid #ffe6eb;
   position: relative;
 }
@@ -1113,7 +1143,8 @@ blockquote {
   position: relative;
 }
 
-#word-cloud, #llm-word-cloud{
+#word-cloud,
+#llm-word-cloud {
   width: 100%;
   height: 70vh;
   min-height: 500px;
@@ -1126,13 +1157,13 @@ blockquote {
 }
 
 #word-cloud:hover {
-  box-shadow: inset 0 0 15px rgba(119,14,28,0.1);
+  box-shadow: inset 0 0 15px rgba(119, 14, 28, 0.1);
 }
 
 .tooltip {
   position: fixed;
   padding: 12px 18px;
-  background: linear-gradient(145deg, rgba(119,14,28,0.95), rgba(90,10,22,0.95));
+  background: linear-gradient(145deg, rgba(119, 14, 28, 0.95), rgba(90, 10, 22, 0.95));
   color: #fff;
   border-radius: 8px;
   font-family: 'my-web-font2';
@@ -1142,7 +1173,7 @@ blockquote {
   opacity: 0;
   transition: all 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
   backdrop-filter: blur(8px);
-  box-shadow: 0 4px 15px rgba(119,14,28,0.2);
+  box-shadow: 0 4px 15px rgba(119, 14, 28, 0.2);
   border: 1px solid #ffd700;
   max-width: 300px;
   transform: translate(-50%, -110%) scale(0.95);
@@ -1156,7 +1187,7 @@ blockquote {
   left: 50%;
   width: 12px;
   height: 12px;
-  background: linear-gradient(145deg, rgba(119,14,28,0.95), rgba(90,10,22,0.95));
+  background: linear-gradient(145deg, rgba(119, 14, 28, 0.95), rgba(90, 10, 22, 0.95));
   transform: translateX(-50%) rotate(45deg);
 }
 
@@ -1169,13 +1200,52 @@ blockquote {
 
 @media (max-width: 768px) {
   #word-cloud {
-      height: 60vh;
-      min-height: 400px;
+    height: 60vh;
+    min-height: 400px;
   }
-  
+
   .tooltip {
-      font-size: 12px;
-      max-width: 200px;
+    font-size: 12px;
+    max-width: 200px;
   }
+}
+
+.game-result {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(119, 14, 28, 0.2);
+  z-index: 1000;
+  width: 80%;
+  max-width: 500px;
+}
+
+.score-text {
+  font-size: 1.8rem;
+  color: #770e1c;
+  text-align: center;
+  margin: 15px 0;
+  font-family: 'my-web-font1';
+}
+
+.restart-btn {
+  font-size: 1.2rem;
+  height: 40px;
+  border-radius: 20px;
+  padding: 0 30px;
+  transition: all 0.3s;
+}
+
+.restart-btn i {
+  margin-right: 8px;
+}
+
+.restart-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(119, 14, 28, 0.3);
 }
 </style>
